@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CameraTest2</string>
+    <string name="hint_continuous_shot">Taking images continuously when Toggle button is checked</string>
+    <string name="text_continuous_shot">Continuous Shot</string>
+    <string name="hint_single_shot">Taking A single image when Toggle button is checked and stops taking pictures</string>
+    <string name="text_single_shot">Single Shot</string>
+    <string name="hint_intervals_shot">Enter the interval in seconds in the EditText below and click the toggle button to start taking pictures in the given intervals of time</string>
+    <string name="hint_enter_intervals">Enter intervals in seconds</string>
+    <string name="text_intervals_shot">Intervals Shot</string>
+    <string name="placeholder_image_count">Image Count : %d</string>
+</resources>

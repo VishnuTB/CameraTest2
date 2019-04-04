@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".ui.activities.MainActivity">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="@string/hint_continuous_shot"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/buttonContinuousShot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_stroke_thin"
+        android:text="@string/text_continuous_shot"
+        android:textAllCaps="false" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/black" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="@string/hint_single_shot"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/buttonSingleShot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_stroke_thin"
+        android:text="@string/text_single_shot"
+        android:textAllCaps="false" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/black" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="@string/hint_intervals_shot"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/editTextIntervals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:hint="@string/hint_enter_intervals"
+        android:inputType="number"
+        android:padding="10dp" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/buttonIntervalsShot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_stroke_thin"
+        android:text="@string/text_intervals_shot"
+        android:textAllCaps="false" />
+
+</LinearLayout>
