@@ -225,6 +225,7 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
                         imageCount = 0;
                     }
                     mImageViewPreview.setImageBitmap(rotatedBitmap);
+                    useImageAt(rotatedBitmap);
                 }
             });
 
@@ -232,6 +233,11 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
             e.printStackTrace();
         }
 
+    }
+
+    /*Images captured will be received here*/
+    private void useImageAt(Bitmap rotatedBitmap) {
+        
     }
 
 }
