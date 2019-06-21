@@ -4,9 +4,11 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
+import android.view.View;
 
 import com.area51.cameratest2.R;
 import com.area51.cameratest2.ui.activities.camera.CameraActivity;
+import com.area51.cameratest2.ui.activities.camera.no_stretch.NoStretchCamera;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -36,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 .setOnClickListener(v -> {
                     int interval = (editTextIntervals.getText().toString().length() > 0) ? Integer.parseInt(editTextIntervals.getText().toString()) : 0;
                     startActivity(CameraActivity.getIntent(MainActivity.this, SHOOT_CONTINUOUSLY, interval));
+                });
+
+        findViewById(R.id.buttonCameraWithoutStretch)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(NoStretchCamera.getIntent(MainActivity.this));
+                    }
                 });
 
         requestCameraPermission();

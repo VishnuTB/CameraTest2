@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
@@ -30,7 +29,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class CameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
+import static com.area51.cameratest2.ui.activities.widgets.ImageUtils.rotateImage;
+
+public class CameraActivity extends AppCompatActivity
+        implements SurfaceHolder.Callback {
 
     public static final String SHOOT_CONTINUOUSLY = "shoot_continuously";
     public static final String SHOOT_SINGLE = "shoot_single";
@@ -58,12 +60,6 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         intent.putExtra(SHOOT_TYPE, shoot_type);
         intent.putExtra(INTERVALS_IN_SECONDS, intervals_in_seconds);
         return intent;
-    }
-
-    public static Bitmap rotateImage(Bitmap source, float angle) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
 
     @Override
@@ -237,7 +233,7 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
 
     /*Images captured will be received here*/
     private void useImageAt(Bitmap rotatedBitmap) {
-        
+
     }
 
 }

@@ -6,6 +6,10 @@
     <string name="text_single_shot">Single Shot</string>
     <string name="hint_intervals_shot">Enter the interval in seconds in the EditText below and click the toggle button to start taking pictures in the given intervals of time</string>
     <string name="hint_enter_intervals">Enter intervals in seconds</string>
+    <string name="text_open_camera">Open Camera</string>
+    <string name="hint_camera_without_stretch">Camera without stretching preview</string>
     <string name="text_intervals_shot">Intervals Shot</string>
     <string name="placeholder_image_count">Image Count : %d</string>
+    <string name="text_on">ON</string>
+    <string name="text_off">OFF</string>
 </resources>

@@ -83,4 +83,22 @@
         android:text="@string/text_intervals_shot"
         android:textAllCaps="false" />
 
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="@string/hint_camera_without_stretch"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/buttonCameraWithoutStretch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_stroke_thin"
+        android:text="@string/text_open_camera"
+        android:textAllCaps="false" />
+
 </LinearLayout>
