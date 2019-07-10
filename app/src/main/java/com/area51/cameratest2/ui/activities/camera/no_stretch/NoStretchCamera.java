@@ -14,13 +14,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
-import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ToggleButton;
 
 import com.area51.cameratest2.R;
-import com.area51.cameratest2.ui.activities.widgets.CameraPreview;
-import com.area51.cameratest2.ui.activities.widgets.ImageUtils;
+import com.area51.cameratest2.utils.ImageUtils;
+import com.area51.cameratest2.utils.widgets.CameraPreview;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
@@ -31,7 +30,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import static com.area51.cameratest2.ui.activities.widgets.ImageUtils.rotateImage;
+import timber.log.Timber;
+
+import static com.area51.cameratest2.utils.ImageUtils.rotateImage;
 
 public class NoStretchCamera extends AppCompatActivity
         implements Camera.PreviewCallback {
@@ -100,7 +101,6 @@ public class NoStretchCamera extends AppCompatActivity
         return c;
     }
 
-
     private void saveImage(Bitmap bitmapImage) {
         File imageDir = new File(ImageUtils.getImageLocation());
         imageDir.mkdirs();
@@ -126,7 +126,7 @@ public class NoStretchCamera extends AppCompatActivity
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
         if (toggleCamera.isChecked()) {
-            Log.i("xxx", "onPreviewFrame: ");
+            Timber.i("onPreviewFrame: ");
             Camera.Parameters cameraParameters = camera.getParameters();
             int width = cameraParameters.getPreviewSize().width;
             int height = cameraParameters.getPreviewSize().height;

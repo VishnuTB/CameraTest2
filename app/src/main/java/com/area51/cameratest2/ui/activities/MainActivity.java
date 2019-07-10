@@ -4,10 +4,11 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
-import android.view.View;
 
 import com.area51.cameratest2.R;
 import com.area51.cameratest2.ui.activities.camera.CameraActivity;
+import com.area51.cameratest2.ui.activities.camera.appbar_camera.AppBarCamera;
+import com.area51.cameratest2.ui.activities.camera.camera2.Camera2Activity;
 import com.area51.cameratest2.ui.activities.camera.no_stretch.NoStretchCamera;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -41,12 +42,13 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         findViewById(R.id.buttonCameraWithoutStretch)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(NoStretchCamera.getIntent(MainActivity.this));
-                    }
-                });
+                .setOnClickListener(v -> startActivity(NoStretchCamera.getIntent(MainActivity.this)));
+
+        findViewById(R.id.buttonCamera2)
+                .setOnClickListener(v -> startActivity(Camera2Activity.getIntent(MainActivity.this)));
+
+        findViewById(R.id.buttonAppBarCamera)
+                .setOnClickListener(v -> startActivity(AppBarCamera.getIntent(MainActivity.this)));
 
         requestCameraPermission();
 

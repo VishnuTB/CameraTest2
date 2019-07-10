@@ -1,4 +1,4 @@
-package com.area51.cameratest2.ui.activities.widgets;
+package com.area51.cameratest2.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;

@@ -1,17 +1,17 @@
-package com.area51.cameratest2.ui.activities.widgets;
+package com.area51.cameratest2.utils.widgets;
 
 import android.content.Context;
 import android.hardware.Camera;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 public class CameraPreview extends SurfaceView
         implements SurfaceHolder.Callback {
 
-    private static final String TAG = CameraPreview.class.getSimpleName();
     private Camera.PreviewCallback previewCallback;
     private SurfaceHolder mHolder;
     private Camera mCamera;
@@ -19,17 +19,16 @@ public class CameraPreview extends SurfaceView
     private Camera.Size mPreviewSize;
 
     public CameraPreview(Context context,
-                         Camera camera,             // pass the camera from the activity
-                         Camera.PreviewCallback previewCallback) { // inorder to get preview frames of the camera, implement Camera.PreviewCallback on activity and pass "this"
+                         Camera camera,
+                         Camera.PreviewCallback previewCallback) {
         super(context);
-        Context mContext = context;
         mCamera = camera;
         this.previewCallback = previewCallback;
 
         // supported preview sizes
         mSupportedPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
         for (Camera.Size str : mSupportedPreviewSizes)
-            Log.i(TAG, str.width + "/" + str.height);
+            Timber.i(str.width + "/" + str.height);
 
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
@@ -48,7 +47,7 @@ public class CameraPreview extends SurfaceView
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-        Log.i(TAG, "surfaceChanged => w=" + w + ", h=" + h);
+        Timber.i("surfaceChanged => w=" + w + ", h=" + h);
         // If your preview can change or rotate, take care of those events here.
         // Make sure to stop the preview before resizing or reformatting it.
         if (mHolder.getSurface() == null) {
@@ -71,12 +70,10 @@ public class CameraPreview extends SurfaceView
             mCamera.setParameters(parameters);
             mCamera.setDisplayOrientation(90);
             mCamera.setPreviewDisplay(mHolder);
-            if (previewCallback != null)
-                mCamera.setPreviewCallback(previewCallback);
+            mCamera.setPreviewCallback(previewCallback);
             mCamera.startPreview();
-
         } catch (Exception e) {
-            Log.e(TAG, "Error starting camera preview: " + e.getMessage());
+            Timber.e("Error starting camera preview: %s", e.getMessage());
         }
     }
 
@@ -112,25 +109,23 @@ public class CameraPreview extends SurfaceView
         Camera.Size optimalSize = null;
         double minDiff = Double.MAX_VALUE;
 
-        int targetHeight = h;
-
         for (Camera.Size size : sizes) {
             double ratio = (double) size.height / size.width;
             if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE)
                 continue;
 
-            if (Math.abs(size.height - targetHeight) < minDiff) {
+            if (Math.abs(size.height - h) < minDiff) {
                 optimalSize = size;
-                minDiff = Math.abs(size.height - targetHeight);
+                minDiff = Math.abs(size.height - h);
             }
         }
 
         if (optimalSize == null) {
             minDiff = Double.MAX_VALUE;
             for (Camera.Size size : sizes) {
-                if (Math.abs(size.height - targetHeight) < minDiff) {
+                if (Math.abs(size.height - h) < minDiff) {
                     optimalSize = size;
-                    minDiff = Math.abs(size.height - targetHeight);
+                    minDiff = Math.abs(size.height - h);
                 }
             }
         }

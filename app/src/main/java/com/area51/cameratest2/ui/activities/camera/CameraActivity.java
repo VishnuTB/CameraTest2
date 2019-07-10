@@ -15,7 +15,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
@@ -29,7 +28,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.area51.cameratest2.ui.activities.widgets.ImageUtils.rotateImage;
+import timber.log.Timber;
+
+import static com.area51.cameratest2.utils.ImageUtils.rotateImage;
 
 public class CameraActivity extends AppCompatActivity
         implements SurfaceHolder.Callback {
@@ -78,27 +79,27 @@ public class CameraActivity extends AppCompatActivity
 
         mToggleButtonCamera.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                Log.i(TAG, "onCreate: isChecked");
+                Timber.i("onCreate: isChecked");
                 if (intervalsInSeconds > 0) {
-                    Log.i(TAG, "onCreate: isChecked - intervalsInSeconds > 0");
+                    Timber.i("onCreate: isChecked - intervalsInSeconds > 0");
                     clickTimer = new Timer();
                     clickTimer.scheduleAtFixedRate(new TimerTask() {
                         @Override
                         public void run() {
                             runOnUiThread(() -> {
-                                Log.i(TAG, "onCreate: isChecked - intervalsInSeconds > 0 - runOnUiThread");
+                                Timber.i("onCreate: isChecked - intervalsInSeconds > 0 - runOnUiThread");
                                 shouldTakePhotoInIntervals = true;
                                 Toast.makeText(CameraActivity.this, "Taking picture", Toast.LENGTH_SHORT).show();
                             });
                         }
                     }, 0, intervalsInSeconds);
                 } else {
-                    Log.w(TAG, "onCreate: isChecked - intervalsInSeconds < 0");
+                    Timber.tag(TAG).w("onCreate: isChecked - intervalsInSeconds < 0");
                     shouldTakePhoto = true;
                     shouldTakePhotoInIntervals = false;
                 }
             } else {
-                Log.e(TAG, "onCreate: isChecked");
+                Timber.e("onCreate: isChecked");
                 if (clickTimer != null) {
                     clickTimer.cancel();
                     clickTimer.purge();
@@ -111,7 +112,7 @@ public class CameraActivity extends AppCompatActivity
         if (getIntent().getExtras() != null) {
             if (getIntent().getExtras().getString(SHOOT_TYPE, "").equals(SHOOT_CONTINUOUSLY)) {
                 intervalsInSeconds = (getIntent().getExtras().getInt(INTERVALS_IN_SECONDS, 0) * 1000);
-                Log.i(TAG, "onCreate: intervalsInSeconds : " + intervalsInSeconds);
+                Timber.i("onCreate: intervalsInSeconds : " + intervalsInSeconds);
                 imageLimit = 0;
             } else if (getIntent().getExtras().getString(SHOOT_TYPE, "").equals(SHOOT_SINGLE)) {
                 imageLimit = 1;
@@ -201,10 +202,10 @@ public class CameraActivity extends AppCompatActivity
 
             mCamera.setPreviewCallback((data, camera) -> {
                 if (shouldTakePhoto || shouldTakePhotoInIntervals) {
-                    Log.i(TAG, "startCamera: shouldTakePhoto : " + shouldTakePhoto);
+                    Timber.i("startCamera: shouldTakePhoto : " + shouldTakePhoto);
                     shouldTakePhotoInIntervals = false;
                     imageCount++;
-                    Log.i(TAG, "Photo count : " + imageCount);
+                    Timber.i("Photo count : " + imageCount);
                     Camera.Parameters cameraParameters = camera.getParameters();
                     int width = cameraParameters.getPreviewSize().width;
                     int height = cameraParameters.getPreviewSize().height;
