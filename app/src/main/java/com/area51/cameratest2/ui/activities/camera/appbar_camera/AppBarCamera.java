@@ -6,18 +6,18 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
 import com.area51.cameratest2.R;
 import com.area51.cameratest2.utils.listeners.AppBarStateChangeListener;
 import com.area51.cameratest2.utils.widgets.CameraPreview;
+import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import timber.log.Timber;
 
 public class AppBarCamera extends AppCompatActivity

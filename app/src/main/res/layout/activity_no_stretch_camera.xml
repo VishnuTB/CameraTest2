@@ -20,7 +20,7 @@
         android:textOff="@string/text_off"
         android:textOn="@string/text_on" />
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewPreview"
         android:layout_width="100dp"
         android:layout_height="100dp"

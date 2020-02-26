@@ -2,8 +2,6 @@ package com.area51.cameratest2.ui.activities;
 
 import android.Manifest;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatEditText;
 
 import com.area51.cameratest2.R;
 import com.area51.cameratest2.ui.activities.camera.CameraActivity;
@@ -16,6 +14,9 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import static com.area51.cameratest2.ui.activities.camera.CameraActivity.SHOOT_CONTINUOUSLY;
 import static com.area51.cameratest2.ui.activities.camera.CameraActivity.SHOOT_SINGLE;
