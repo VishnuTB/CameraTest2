@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="sp15">15sp</dimen>
+    <dimen name="sp26">26sp</dimen>
+
+
+    <dimen name="fabMargin">@dimen/dp16</dimen>
+    <dimen name="spacingSmall">@dimen/dp5</dimen>
+
+
+    <dimen name="textSmall">@dimen/sp15</dimen>
+    <dimen name="textHeading">@dimen/sp26</dimen>
+</resources>

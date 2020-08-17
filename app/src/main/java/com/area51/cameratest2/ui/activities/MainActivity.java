@@ -7,6 +7,7 @@ import com.area51.cameratest2.R;
 import com.area51.cameratest2.ui.activities.camera.CameraActivity;
 import com.area51.cameratest2.ui.activities.camera.appbar_camera.AppBarCamera;
 import com.area51.cameratest2.ui.activities.camera.camera2.Camera2Activity;
+import com.area51.cameratest2.ui.activities.camera.camerax.CameraXActivity;
 import com.area51.cameratest2.ui.activities.camera.no_stretch.NoStretchCamera;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.buttonAppBarCamera)
                 .setOnClickListener(v -> startActivity(AppBarCamera.getIntent(MainActivity.this)));
+
+        findViewById(R.id.buttonCameraX)
+                .setOnClickListener(v -> startActivity(CameraXActivity.getIntent(MainActivity.this, "cameraX")));
 
         requestCameraPermission();
 
