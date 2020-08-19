@@ -23,4 +23,5 @@
     <string name="intro_message">Welcome to camera2</string>
     <string name="text_camera_x">Camera X</string>
     <string name="text_open_camera_x">Open Camera X</string>
+    <string name="text_usb_camera">USB Camera</string>
 </resources>

@@ -9,6 +9,7 @@ import com.area51.cameratest2.ui.activities.camera.appbar_camera.AppBarCamera;
 import com.area51.cameratest2.ui.activities.camera.camera2.Camera2Activity;
 import com.area51.cameratest2.ui.activities.camera.camerax.CameraXActivity;
 import com.area51.cameratest2.ui.activities.camera.no_stretch.NoStretchCamera;
+import com.area51.cameratest2.ui.activities.camera.usbCamera.USBCameraActivity;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.buttonCameraX)
                 .setOnClickListener(v -> startActivity(CameraXActivity.getIntent(MainActivity.this, "cameraX")));
+
+        findViewById(R.id.buttonUSBCamera)
+                .setOnClickListener(v -> startActivity(USBCameraActivity.getIntent(MainActivity.this)));
 
         requestCameraPermission();
 

@@ -159,6 +159,24 @@
             android:text="@string/text_open_camera_x"
             android:textAllCaps="false" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/text_usb_camera"
+            android:textColor="@android:color/black"
+            android:textSize="13sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonUSBCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_stroke_thin"
+            android:text="@string/text_usb_camera"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </ScrollView>
