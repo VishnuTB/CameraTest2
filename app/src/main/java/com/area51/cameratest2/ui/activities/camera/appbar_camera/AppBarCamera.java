@@ -12,6 +12,7 @@ import com.area51.cameratest2.R;
 import com.area51.cameratest2.utils.listeners.AppBarStateChangeListener;
 import com.area51.cameratest2.utils.widgets.CameraPreview;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -25,10 +26,9 @@ public class AppBarCamera extends AppCompatActivity
 
     boolean takePhoto = false;
     private FrameLayout cameraFrame;
+    private final String TAG = AppBarCamera.class.getSimpleName();
     private Camera mCamera;
-    private CameraPreview cameraPreview;
-    private AppBarLayout appBarLayout;
-    private String TAG = AppBarCamera.class.getSimpleName();
+    private FloatingActionButton mButtonCapture;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, AppBarCamera.class);
@@ -39,8 +39,9 @@ public class AppBarCamera extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_bar_camera);
 
-        appBarLayout = findViewById(R.id.appBarLayout);
+        AppBarLayout appBarLayout = findViewById(R.id.appBarLayout);
         cameraFrame = findViewById(R.id.cameraFrame);
+        mButtonCapture = findViewById(R.id.fabCapture);
 
         appBarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
             @Override
@@ -48,13 +49,13 @@ public class AppBarCamera extends AppCompatActivity
                 Timber.d(currentState.name());
                 switch (currentState) {
                     case IDLE:
+                    case COLLAPSED:
+                        mButtonCapture.hide();
                         takePhoto = false;
                         break;
                     case EXPANDED:
+                        mButtonCapture.show();
                         takePhoto = true;
-                        break;
-                    case COLLAPSED:
-                        takePhoto = false;
                         break;
                 }
             }
@@ -71,7 +72,7 @@ public class AppBarCamera extends AppCompatActivity
 
     private void startCamera() {
         mCamera = getCameraInstance();
-        cameraPreview = new CameraPreview(AppBarCamera.this, mCamera, this);
+        CameraPreview cameraPreview = new CameraPreview(AppBarCamera.this, mCamera, this);
         cameraFrame.addView(cameraPreview);
         try {
             Camera.Parameters params = mCamera.getParameters();
@@ -121,6 +122,16 @@ public class AppBarCamera extends AppCompatActivity
     public void onPreviewFrame(byte[] data, Camera camera) {
         if (takePhoto) {
             Timber.i("onPreviewFrame: ");
+//            Camera.Parameters cameraParameters = camera.getParameters();
+//            int width = cameraParameters.getPreviewSize().width;
+//            int height = cameraParameters.getPreviewSize().height;
+//            int format = cameraParameters.getPreviewFormat();
+//            YuvImage image = new YuvImage(data, format, width, height, null);
+//            ByteArrayOutputStream out = new ByteArrayOutputStream();
+//            Rect area = new Rect(0, 0, width, height);
+//            image.compressToJpeg(area, 50, out);
+//            Bitmap imageBitMap = BitmapFactory.decodeByteArray(out.toByteArray(), 0, out.size());
+//            Bitmap rotatedBitmap = rotateImage(imageBitMap, 90);
         }
     }
 

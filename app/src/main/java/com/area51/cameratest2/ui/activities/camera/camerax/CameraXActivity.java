@@ -35,7 +35,7 @@ public class CameraXActivity extends AppCompatActivity {
     private PreviewView mPreviewView;
     private AppCompatImageButton captureImage;
     private AppCompatTextView mTextViewImageCount;
-    private Executor executor = Executors.newSingleThreadExecutor();
+    private final Executor executor = Executors.newSingleThreadExecutor();
     private String folderName;
     private int imageCount = 0;
     private Camera camera;
@@ -73,7 +73,7 @@ public class CameraXActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        
+
     }
 
     private void startCamera() {
@@ -113,7 +113,7 @@ public class CameraXActivity extends AppCompatActivity {
                 .build();
         camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis, imageCapture);
 
-        preview.setSurfaceProvider(mPreviewView.createSurfaceProvider());
+        preview.setSurfaceProvider(mPreviewView.getSurfaceProvider());
 
         captureImage.setOnClickListener(v -> {
             ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture.OutputFileOptions.Builder(ImageUtils.getImageFile(folderName))
