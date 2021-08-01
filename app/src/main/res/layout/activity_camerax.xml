@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.camera.CameraActivity">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:scaleType="fitCenter" />
+
+    <!--    <com.serenegiant.usb.widget.UVCCameraTextureView-->
+    <!--        android:id="@+id/textureViewCAMERA"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content" />-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewImageCount"
+        style="@style/TextStyleWhite.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_top_start"
+        tools:text="@string/placeholder_image_count" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/captureImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="@dimen/fabMargin"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        android:src="@drawable/shape_circle" />
+
+</FrameLayout>

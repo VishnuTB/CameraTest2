@@ -3,9 +3,10 @@ package com.area51.cameratest2.ui.activities.camera.camera2;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.area51.cameratest2.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Camera2Activity extends AppCompatActivity {
 
